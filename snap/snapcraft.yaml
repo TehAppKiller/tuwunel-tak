@@ -24,6 +24,12 @@ description: |
 
   sudo snap connect tuwunel-tak:mount-observe
   
+  **!!! Files can only be written in a directory owned by `root` !!!**
+  **!!! `/home` base directory content is not readable !!!**
+  
+  This is due to current behavior and restrictions of snaps by Canonical.
+  Check common doc in FAQ if you want to setup data in `/home` directory.
+  
   **Minimal configuration**
   * Configuration file 'tuwunel.toml' is located in "$SNAP_DATA/etc/tuwunel/tuwunel.toml" accessible through "/var/snap/tuwunel-tak/current/etc/tuwunel/tuwunel.toml" with default snapd installation
   
