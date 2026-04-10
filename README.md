@@ -50,16 +50,31 @@ vi $SNAP_DATA/etc/tuwunel/tuwunel.toml
 One help sheet of Vim commands available [here](https://devhints.io/vim).
 
 ## Minimal configuration
-If you want to store your database in the snap data area, change this line:\
-`database_path = "var/lib/tuwunel"`\
-Yes, `var/lib/tuwunel` and not `/var/lib/tuwunel` ; your database will be saved in `"$SNAP_DATA/var/lib/tuwunel"` this way
-  
-New user registration is disabled by default (cf. @'allow_registration')\
-etc... cf. toml-integrated doc and Tuwunel official doc
+### Database
+* (Recommended) Store your database in `$SNAP_COMMON` which is accessible through simlink "/var/common"
+`database_path = "/var/common/var/lib/tuwunel"` ; your database will be saved in `"$SNAP_COMMON/var/lib/tuwunel"`
+
+* (NOT recommended) To store your database in `$SNAP_DATA`, do not use first slash:
+`database_path = "var/lib/tuwunel"` # your database will be saved in `"$SNAP_DATA/var/lib/tuwunel"` this way
+
+* `$SNAP_COMMON` is the common data kept for each new release of the snap ; `$SNAP_DATA` is data copied from current snap release to the new one
+
+* (Alternative) To store your database in `/home` folder, do not forget to connect "removable-media", and read common documentation
+
+### Other parameters
+* New user registration is disabled by default (cf. @'allow_registration')
+* etc...
+* Please read the toml-integrated doc and Tuwunel official doc
+
+### Apply Configuration
+To restart the service with new configuration, use the command:
+```
+sudo snap restart tuwunel-tak
+```
   
 ## Configuration information
 Configuration file is automatically created if not found in "$SNAP_DATA/etc/tuwunel/" ; copied from original source configuration file.\
-Configuration file is never updated (for now) ; if changes are required with new software release, it is your full responsibility to update it.
+Configuration file is never updated (for now) ; if changes are required with new software release, it is your full responsibility to update it (for now).
 
 ## FAQ
 See my common doc about [FAQ](https://github.com/TehAppKiller/Snapcraft-common-doc/tree/main#FAQ).
