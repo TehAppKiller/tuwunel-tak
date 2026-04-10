@@ -33,16 +33,32 @@ description: |
   **Minimal configuration**
   * Configuration file 'tuwunel.toml' is located in "$SNAP_DATA/etc/tuwunel/tuwunel.toml" accessible through "/var/snap/tuwunel-tak/current/etc/tuwunel/tuwunel.toml" with default snapd installation
   
-  * If you want to store your database in the snap data area:
+  * (Recommended) Store your database in $SNAP_COMMON which is accessible through simlink "/var/common"
   
-  database_path = "var/lib/tuwunel" # 'var/lib/tuwunel' and not '/var/lib/tuwunel' ; your database will be saved in "$SNAP_DATA/var/lib/tuwunel" this way
+  database_path = "/var/common/var/lib/tuwunel" ; your database will be saved in "$SNAP_COMMON/var/lib/tuwunel"
+  
+  * (NOT recommended) To store your database in $SNAP_DATA, do not use first slash:
+  
+  database_path = "var/lib/tuwunel" # your database will be saved in "$SNAP_DATA/var/lib/tuwunel" this way
+  
+  * $SNAP_COMMON is the common data kept for each new release of the snap ; $SNAP_DATA is data copied from current snap release to the new one
+  
+  * (Alternative) To store your database in '/home' folder, do not forget to connect "removable-media", and read common documentation on my github
   
   * New user registration is disabled by default (cf. @'allow_registration')
-  * etc... cf. toml-integrated doc and Tuwunel official doc
+  * etc...
+  * Please read the toml-integrated doc and Tuwunel official doc
+  
+  ** To restart the service with new configuration, use the command:
+  
+  sudo snap restart tuwunel-tak
   
   **Information:**
-  * Configuration file is automatically created if not found in "$SNAP_DATA/etc/tuwunel/" ; copied from original source configuration file
-  * Configuration file is never updated (for now) ; if changes are required with new software release, it is your full responsibility to update it.
+  * Configuration file is automatically created, if not found, in "$SNAP_DATA/etc/tuwunel/" ; copied from original source configuration file
+  * Configuration file is never updated (for now) ; if changes are required with new software release, it is your full responsibility to update it (for now).
+  
+  **Status:**
+  * The snap remains a Beta release until more visibility on the complexity of app updates
 website: https://github.com/matrix-construct/tuwunel
 source-code: https://github.com/TehAppKiller/tuwunel-tak
 issues: https://github.com/TehAppKiller/tuwunel-tak/issues
@@ -71,6 +87,10 @@ apps:
       - home # useless for now ; if daemon snaps are allowed to read /home folder one day...
     environment:
       TUWUNEL_CONFIG: $SNAP_DATA/etc/tuwunel/tuwunel.toml
+      
+layout:
+  /var/common:
+    symlink: $SNAP_COMMON
 
 parts:
   tuwunel:
