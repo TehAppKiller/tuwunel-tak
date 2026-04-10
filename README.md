@@ -2,6 +2,7 @@
 [![tuwunel-tak](https://snapcraft.io/tuwunel-tak/badge.svg)](https://snapcraft.io/tuwunel-tak)
 ![snap arch](https://badgen.net/snapcraft/architecture/tuwunel-tak)
 ![snap size](https://badgen.net/snapcraft/size/tuwunel-tak/amd64/stable)
+( ![snap size](https://badgen.net/snapcraft/size/tuwunel-tak/amd64/beta) )
 
 ## Snap Description
 UnOfficial release of Tuwunel\
