@@ -2,7 +2,6 @@
 [![tuwunel-tak](https://snapcraft.io/tuwunel-tak/badge.svg)](https://snapcraft.io/tuwunel-tak)
 ![snap arch](https://badgen.net/snapcraft/architecture/tuwunel-tak)
 ![snap size](https://badgen.net/snapcraft/size/tuwunel-tak/amd64/stable)
-( ![snap size](https://badgen.net/snapcraft/size/tuwunel-tak/amd64/beta) )
 
 ## Snap Description
 UnOfficial release of Tuwunel\
@@ -40,17 +39,27 @@ sudo snap connect tuwunel-tak:mount-observe
 This is due to current behavior and restrictions of snaps by Canonical.\
 Check common doc in FAQ if you want to setup data in `/home` directory.
 
-## How to access Configuration file
-1. Accessible through `/var/snap/tuwunel-tak/current/etc/tuwunel/tuwunel.toml` with default snapd installation
+## FAQ
+See common doc about [FAQ](https://github.com/TehAppKiller/Snapcraft-common-doc/tree/main#FAQ).
 
-2. You can access the snap in shell mode and edit the file with Vim:
+### How to access Configuration file
+You can access the snap data in 2 ways:
+
+#### - Directly
+With default snapd installation:
 ```
-sudo snap run --shell tuwunel-tak.tuwunel
+/var/snap/tuwunel-tak/current/etc/tuwunel/tuwunel.toml
+```
+
+#### - Via shell
+In shell mode you can edit the file with Vim:
+```
+sudo snap run --shell qbittorrent-tak.qbittorrent
 vi $SNAP_DATA/etc/tuwunel/tuwunel.toml
 ```
 One help sheet of Vim commands available [here](https://devhints.io/vim).
 
-## Minimal configuration
+### Minimal configuration
 ### Database
 * (Recommended) Store your database in `$SNAP_COMMON` which is accessible through simlink "/var/common"
 `database_path = "/var/common/var/lib/tuwunel"` ; your database will be saved in `"$SNAP_COMMON/var/lib/tuwunel"`
@@ -62,26 +71,23 @@ One help sheet of Vim commands available [here](https://devhints.io/vim).
 
 * (Alternative) To store your database in `/home` folder, do not forget to connect "removable-media", and read common documentation
 
-### Other parameters
+#### Other parameters
 * New user registration is disabled by default (cf. @'allow_registration')
 * etc...
 * Please read the toml-integrated doc and Tuwunel official doc
 
-### Apply Configuration
+#### Apply Configuration
 To restart the service with new configuration, use the command:
 ```
 sudo snap restart tuwunel-tak
 ```
   
-## Configuration information
+### Configuration information
 Configuration file is automatically created if not found in "$SNAP_DATA/etc/tuwunel/" ; copied from original source configuration file.\
 Configuration file is never updated (for now) ; if changes are required with new software release, it is your full responsibility to update it (for now).
 
-## FAQ
-See my common doc about [FAQ](https://github.com/TehAppKiller/Snapcraft-common-doc/tree/main#FAQ).
-
 ## Building
-See my common doc about [building a snap](https://github.com/TehAppKiller/Snapcraft-common-doc/tree/main#Building).
+See common doc about [building a snap](https://github.com/TehAppKiller/Snapcraft-common-doc/tree/main#Building).
 
 ## Versionning
-See my common doc about [versionning](https://github.com/TehAppKiller/Snapcraft-common-doc/tree/main#Versionning).
+See common doc about [versionning](https://github.com/TehAppKiller/Snapcraft-common-doc/tree/main#Versionning).

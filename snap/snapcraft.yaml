@@ -62,13 +62,13 @@ description: |
 website: https://github.com/matrix-construct/tuwunel
 source-code: https://github.com/TehAppKiller/tuwunel-tak
 issues: https://github.com/TehAppKiller/tuwunel-tak/issues
-contact: mailto:tehappkiller@proton.me
+contact: ['mailto:tehappkiller@proton.me', 'https://mastodon.social/@TehAppKiller']
 donation: https://whydonate.com/en/fundraising/help-teh-devz
 license: MIT
 icon: icon.svg
 grade: stable
 confinement: strict
-base: core24
+base: core26
 adopt-info: tuwunel
 platforms:
   amd64:
